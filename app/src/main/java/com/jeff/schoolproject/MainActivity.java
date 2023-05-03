@@ -21,6 +21,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    // cette activité est pris en compte comme le login de notre app avec Firebase comme back-end
     TextInputEditText editTextEmail, editTextPassword;
     Button idSendButton, account;
 
@@ -52,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         account = findViewById(R.id.account);
         progressBar = findViewById(R.id.progressBar);
 
+
+        //pour une première connexion sur l'appli il faut s'enregistrer
         account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,10 +79,12 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
+
                 if (TextUtils.isEmpty(password)) {
                     Toast.makeText(MainActivity.this, "Entrer votre mot de passe", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
 
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
